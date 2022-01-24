@@ -24,6 +24,7 @@ handler.post(async (req: NextApiRequest, res: NextApiResponse) => {
     process.env.CONTRACT_ADDRESS || ""
   );
 
+  // @ts-ignore
   const buffer = fs.readFileSync(req.files.file[0].path);
   const fileType = await fileTypeFromBuffer(buffer);
   return new Promise<void>((resolve) => {
