@@ -21,7 +21,7 @@ function MediaPage({ data }: { data: Token }) {
   useEffect(() => {
     console.log(audioPlayer?.audioEl?.current);
     const seconds = Math.floor(
-      audioPlayer?.current.audioEl?.current?.duration || 0
+      audioPlayer?.current?.audioEl?.current?.duration || 0
     );
     setDuration(calculateTime(seconds));
   }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState]);

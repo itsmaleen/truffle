@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ReactNode } from "react";
 import { Button, MenuDropdown, WalletOptionsModal } from "..";
 import { useAccount } from "wagmi";
+import { useRouter } from "next/router";
 
 interface Props {
   children: ReactNode;
@@ -16,6 +17,8 @@ export default function Layout(props: Props) {
   const [{ data: accountData, loading }, disconnect] = useAccount({
     fetchEns: true,
   });
+
+  const router = useRouter();
 
   const renderLabel = () => {
     if (accountData?.ens) {
@@ -57,7 +60,10 @@ export default function Layout(props: Props) {
       return (
         <MenuDropdown
           label={renderLabel()}
-          options={[{ label: "Disconnect", onClick: disconnect }]}
+          options={[
+            { label: "Mint NFT", onClick: () => router.push("/mint") },
+            { label: "Disconnect", onClick: disconnect },
+          ]}
         />
       );
     }

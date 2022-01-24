@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
-import { ThirdwebSDK } from "@3rdweb/sdk";
+import { useState } from "react";
 import { useAccount } from "wagmi";
+import { Layout } from "../components";
 
 export default function CreateNFTPage() {
+  const [showWalletOptions, setShowWalletOptions] = useState(false);
   const CreateNFTForm = () => {
     const [{ data: accountData, loading: accountLoading }] = useAccount();
     const CreateNFT = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -147,8 +148,13 @@ export default function CreateNFTPage() {
   };
 
   return (
-    <div className="container mx-auto p-4 sm:p-6 lg:p-8">
-      <CreateNFTForm />
-    </div>
+    <Layout
+      showWalletOptions={showWalletOptions}
+      setShowWalletOptions={setShowWalletOptions}
+    >
+      <div className="container mx-auto p-4 sm:p-6 lg:p-8">
+        <CreateNFTForm />
+      </div>
+    </Layout>
   );
 }
