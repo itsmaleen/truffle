@@ -14,16 +14,20 @@ function MediaPage({ data }: { data: Token }) {
 
   let interval = setInterval(() => {
     setCurrentTime(
+      // @ts-ignore
       calculateTime(audioPlayer?.current?.audioEl?.current?.currentTime)
     );
   }, 1000);
 
   useEffect(() => {
+    // @ts-ignore
     console.log(audioPlayer?.audioEl?.current);
     const seconds = Math.floor(
+      // @ts-ignore
       audioPlayer?.current?.audioEl?.current?.duration || 0
     );
     setDuration(calculateTime(seconds));
+    // @ts-ignore
   }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState]);
 
   const calculateTime = (secs: number) => {
@@ -108,6 +112,7 @@ function MediaPage({ data }: { data: Token }) {
                   className="hidden sm:flex mt-8 w-full bg-rose-600 border border-transparent rounded-md py-3 px-8 items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   src={toValidHTTPSURI(data.contentUri || "")}
                   controls
+                  // @ts-ignore
                   ref={audioPlayer}
                 />
               </div>

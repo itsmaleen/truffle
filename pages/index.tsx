@@ -71,7 +71,7 @@ export async function getServerSideProps() {
   const data = await fetch("http://localhost:3000/api/nft").catch((err) => {
     console.log(err);
   });
-  const tokens = await data.json();
+  const tokens = await data?.json();
   return {
     props: {
       tokens,
