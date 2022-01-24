@@ -57,6 +57,7 @@ handler.post(async (req: NextApiRequest, res: NextApiResponse) => {
         res.status(401).json({
           message: "Error uploading to IPFS",
           error: err.message,
+          // @ts-ignore
           req: req.files.file[0].path,
         });
         resolve();
